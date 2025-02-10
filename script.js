@@ -90,25 +90,26 @@ function submitForm() {
     formData.append("productId", productId);
 
     fetch("https://script.google.com/macros/s/AKfycbywYIjiqjSV86gkcjznqTG2ivTQuk-X2cT1QLLM5kq3TiySKmM2mHmTLXKS1aZedos_6w/exec", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: formData.toString()
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("Inquiry submitted successfully!");
-            closeForm();
-        } else {
-            alert("Submission failed: " + data.error);
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Error submitting inquiry. Please try again.");
-    });
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData.toString()
+})
+.then(response => response.json()) // Convert to JSON
+.then(data => {
+    if (data.success) {
+        alert("Inquiry submitted successfully!");
+        closeForm();
+    } else {
+        alert("Submission failed: " + data.error);
+    }
+})
+.catch(error => {
+    console.error("Error:", error);
+    alert("Error submitting inquiry. Please try again.");
+});
+
 }
 
 // Load Products
