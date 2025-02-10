@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saree Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Saree Collection</h1>
+
+    <div id="product-container" class="product-container"></div>
+
+    <!-- Pagination Controls -->
+    <div id="pagination" class="pagination"></div>
+
+    <!-- Inquiry Form (Hidden Initially) -->
+    <div id="inquiry-form-container" class="form-container">
+        <div class="form">
+            <h2>Product Inquiry</h2>
+            <input type="hidden" id="product-id">
+            <label>Name:</label>
+            <input type="text" id="name" required>
+            <label>Mobile:</label>
+            <input type="tel" id="mobile" required>
+            <label>City:</label>
+            <input type="text" id="city" required>
+            <button onclick="submitForm()">Submit</button>
+            <button onclick="closeForm()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
