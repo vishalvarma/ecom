@@ -94,9 +94,14 @@ function submitForm() {
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: formData.toString()
+    body: new URLSearchParams({
+        name: name,
+        mobile: mobile,
+        city: city,
+        productId: productId
+    })
 })
-.then(response => response.json()) // Convert to JSON
+.then(response => response.json()) // Convert response to JSON
 .then(data => {
     if (data.success) {
         alert("Inquiry submitted successfully!");
