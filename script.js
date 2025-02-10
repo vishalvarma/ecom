@@ -5,7 +5,7 @@ let currentPage = 1;
 // Fetch Products from Google Sheets
 async function fetchProducts() {
     try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycby_NIHOaA-EuvlqcY25jIrgRYfWWExUxUo7d1wo25Io43GUxSyNJEjictiTtH67KjI4Lg/exec");
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwI6KEE1VrD14jqBHW4GQ9z0YYSLtDrfHfN8eqq-O0bimKNVT4PmrVnBtvZ_Ca3aqBJkw/exec");
         products = await response.json();
         renderProducts();
     } catch (error) {
