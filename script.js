@@ -17,7 +17,7 @@ function openWhatsApp(productId, productName) {
 // Fetch Products from Google Sheets
 async function fetchProducts() {
     try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwI6KEE1VrD14jqBHW4GQ9z0YYSLtDrfHfN8eqq-O0bimKNVT4PmrVnBtvZ_Ca3aqBJkw/exec");
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyP4nUP76N6OwFu7J14IotNEA5dBrRBjDZYCmwccjT-c7X0ZQtKmLBZMiuaKHWF4j1o3Q/exec");
         if (!response.ok) throw new Error("Failed to fetch products");
         products = await response.json();
         renderProducts();
