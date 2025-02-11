@@ -1,5 +1,9 @@
+const PRODUCTS_PER_PAGE = 25;
+let products = [];
+let currentPage = 1;
+
 // Encoded WhatsApp number (basic obfuscation)
-const encodedNumber = "OTkwODIwNjAzNA=="; // Base64-encoded "9908206034"
+const encodedNumber = "OTkwODIwNjAzNA=="; // Base64-encoded
 
 // Function to decode and generate WhatsApp URL
 function openWhatsApp(productId, productName) {
@@ -10,7 +14,20 @@ function openWhatsApp(productId, productName) {
     window.open(whatsappURL, "_blank");
 }
 
-// Modify button behavior to use WhatsApp redirection
+// Fetch Products from Google Sheets
+async function fetchProducts() {
+    try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwI6KEE1VrD14jqBHW4GQ9z0YYSLtDrfHfN8eqq-O0bimKNVT4PmrVnBtvZ_Ca3aqBJkw/exec");
+        if (!response.ok) throw new Error("Failed to fetch products");
+        products = await response.json();
+        renderProducts();
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        alert("Failed to load products. Please try again.");
+    }
+}
+
+// Render Products on Current Page
 function renderProducts() {
     const container = document.getElementById("product-container");
     container.innerHTML = "";
@@ -32,3 +49,28 @@ function renderProducts() {
 
     renderPagination();
 }
+
+// Render Pagination Controls
+function renderPagination() {
+    const paginationContainer = document.getElementById("pagination");
+    paginationContainer.innerHTML = "";
+
+    const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement("button");
+        button.textContent = i;
+        button.onclick = () => goToPage(i);
+        if (i === currentPage) button.classList.add("active"); // Highlight current page
+        paginationContainer.appendChild(button);
+    }
+}
+
+// Change Page
+function goToPage(page) {
+    currentPage = page;
+    renderProducts();
+}
+
+// Load Products
+fetchProducts();
