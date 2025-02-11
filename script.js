@@ -89,7 +89,7 @@ function submitForm() {
     formData.append("city", city);
     formData.append("productId", productId);
 
-    fetch("https://script.google.com/macros/s/AKfycbywYIjiqjSV86gkcjznqTG2ivTQuk-X2cT1QLLM5kq3TiySKmM2mHmTLXKS1aZedos_6w/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxjTvcpHgKTg4nq9luD47Oh2Jjff5x5AXhsAfEY1supyQYQSr4bC9KtQ_uqRUu8KzVx/exec", {
     method: "POST",
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
